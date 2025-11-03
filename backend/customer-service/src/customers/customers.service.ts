@@ -30,6 +30,10 @@ export class CustomersService {
     return customer;
   }
 
+  async findByEmail(email: string): Promise<Customer | undefined> {
+    return this.customerRepository.findOne({ where: { email } });
+  }
+
   async create(createCustomerDto: CreateCustomerDto): Promise<Customer> {
     const customer = this.customerRepository.create(createCustomerDto);
     return this.customerRepository.save(customer);

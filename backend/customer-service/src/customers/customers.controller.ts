@@ -34,6 +34,15 @@ export class CustomersController {
     return this.customersService.getCustomerOrders(+id);
   }
 
+  @Get('email/:email')
+  async findByEmail(@Param('email') email: string) {
+    const customer = await this.customersService.findByEmail(email);
+    if (!customer) {
+      throw new NotFoundException(`Customer with email ${email} not found`);
+    }
+    return customer;
+  }
+
   @Post()
   @HttpCode(HttpStatus.CREATED)
   async create(@Body() createCustomerDto: CreateCustomerDto) {

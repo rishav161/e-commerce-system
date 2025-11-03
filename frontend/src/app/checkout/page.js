@@ -50,7 +50,18 @@ export default function CheckoutPage() {
         zipCode: formData.zipCode,
       };
 
-      const customer = await customerAPI.createCustomer(customerData);
+      let customer;
+      try {
+        customer = await customerAPI.getCustomerByEmail(customerData.email);
+        console.log('Existing customer found:', customer);
+      } catch (e) {
+        if (e.message.includes('Customer with email') && e.message.includes('not found')) {
+          console.log('No existing customer found, creating new one.');
+          customer = await customerAPI.createCustomer(customerData);
+        } else {
+          throw e; // Re-throw other errors
+        }
+      }
 
       // Create order
       const orderData = {

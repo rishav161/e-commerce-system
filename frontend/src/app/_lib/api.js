@@ -126,6 +126,12 @@ export const customerAPI = {
   getCustomer: (id) => apiRequest(`${env.CUSTOMER_SERVICE_URL}/customers/${id}`),
 
   /**
+   * Get customer by email
+   */
+  getCustomerByEmail: (email) =>
+    apiRequest(`${env.CUSTOMER_SERVICE_URL}/customers/email/${email}`),
+
+  /**
    * Create customer
    */
   createCustomer: (data) =>
