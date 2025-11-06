@@ -19,7 +19,6 @@
     "noFallthroughCasesInSwitch": false,
     "esModuleInterop": true,
     "resolveJsonModule": true,
-    "types": ["node"],
     "moduleResolution": "node"
   },
   "include": ["src/**/*"],
