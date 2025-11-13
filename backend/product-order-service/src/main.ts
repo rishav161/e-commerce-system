@@ -21,7 +21,13 @@ async function bootstrap() {
   
   // Enable CORS for frontend
   app.enableCors({
-    origin: ['http://localhost:3000', 'http://localhost:3001'],
+    origin: [
+      'http://localhost:3000', 
+      'http://localhost:3001',
+      'https://e-commerce-system-9tx1.vercel.app',
+      'https://e-commerce-system-product.onrender.com',
+      'https://e-commerce-customer-s1fh.onrender.com'
+    ],
     credentials: true,
   });
 
